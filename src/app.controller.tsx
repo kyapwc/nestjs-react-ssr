@@ -9,17 +9,28 @@ import App from '@client/App';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  @Get('/')
+  getMainPage(@Res() res: Response) {
+    const name = 'Yap Wei Chun';
+    const url = '/';
+    const component = renderToString(<App url={url} name={name} />);
+    console.log('component: ', component);
+
+    const html = `
+    <!doctype html>
+      <html>
+      <body>
+        <div id="root">${component}</div>
+      </body>
+    </html>`;
+
+    return res.send(html);
   }
 
-  @Get()
-  getHello(@Res() res: Response) {
+  @Get('/waybill')
+  getWaybillPage(@Res() res: Response) {
     const name = 'Yap Wei Chun';
-    const chance = this.getRandomInt(1, 10);
-    const url = chance <= 5 ? '/waybill' : '/';
+    const url = '/waybill';
     const component = renderToString(<App url={url} name={name} />);
     console.log('component: ', component);
 
