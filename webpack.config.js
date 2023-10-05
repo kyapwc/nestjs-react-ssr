@@ -1,3 +1,4 @@
+/* eslint-disable global-require, no-confusing-arrow, max-len, @typescript-eslint/no-var-requires */
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');

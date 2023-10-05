@@ -14,8 +14,8 @@ const App = (props) => {
     <StoreProvider>
       <StaticRouter location={props.url}>
         <Routes>
-          <Route path="/waybill" element={<Test {...props} />} />
           <Route path="/" element={<div>LOL, {props.name}</div>} />
+          <Route path="/waybill" element={<Test {...props} />} />
         </Routes>
       </StaticRouter>
     </StoreProvider>
