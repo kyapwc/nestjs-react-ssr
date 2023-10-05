@@ -9,10 +9,18 @@ import App from '@client/App';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   @Get()
   getHello(@Res() res: Response) {
     const name = 'Yap Wei Chun';
-    const component = renderToString(<App url="/waybill" name={name} />);
+    const chance = this.getRandomInt(1, 10);
+    const url = chance <= 5 ? '/waybill' : '/';
+    const component = renderToString(<App url={url} name={name} />);
     console.log('component: ', component);
 
     const html = `
