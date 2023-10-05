@@ -53,7 +53,7 @@ const StoreProvider = (props) => {
   }
 
   return (
-    <StoreContext.Provider value={state}>
+    <StoreContext.Provider value={{ state, getBBOrders, getOutsourceOrders }}>
       {props.children}
     </StoreContext.Provider>
   );

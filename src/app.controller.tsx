@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Response } from 'express';
-import Main from '@client/main';
+import App from '@client/App';
 
 @Controller()
 export class AppController {
@@ -12,7 +12,8 @@ export class AppController {
   @Get()
   getHello(@Res() res: Response) {
     const name = 'Yap Wei Chun';
-    const component = renderToString(<Main url="/waybill" name={name} />);
+    const component = renderToString(<App url="/waybill" name={name} />);
+    console.log('component: ', component);
 
     const html = `
     <!doctype html>
